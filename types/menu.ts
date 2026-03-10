@@ -1,7 +1,10 @@
-export type Menu = {
-  id: number;
+export interface SubMenu {
+  title: string;
+  path: string;
+}
+
+export interface Menu {
   title: string;
   path?: string;
-  newTab: boolean;
-  submenu?: Menu[];
-};
+  submenu?: SubMenu[];
+}
