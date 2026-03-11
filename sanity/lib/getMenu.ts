@@ -1,13 +1,35 @@
 import { client } from "./client";
 
 export async function getMenu() {
-  const query = `*[_type == "menu"] | order(_createdAt asc){
+
+  const query = `*[_type == "menu"] | order(id asc){
+    id,
     title,
     path,
+    newTab,
+
     submenu[]{
+      id,
       title,
-      path
-    }
+      path,
+      newTab
+    },
+
+    logoLight{
+      asset->{
+        url
+      }
+    },
+
+    logoDark{
+      asset->{
+        url
+      }
+    },
+
+    githubLink,
+    buttonText,
+    buttonLink
   }`;
 
   return await client.fetch(query);
