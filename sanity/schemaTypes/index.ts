@@ -9,7 +9,8 @@ import hero from './hero'
 import integration from './integration'
 import feature from './feature'
 import about from './about'
+import featureTab from './featureTab'
 
 export const schema: { types: SchemaTypeDefinition[] } = {
-  types: [blockContentType, categoryType, postType, authorType,menu,hero,integration,feature,about],
+  types: [blockContentType, categoryType, postType, authorType,menu,hero,integration,feature,about,featureTab],
 }
