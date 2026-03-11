@@ -1,4 +1,4 @@
-import { defineType, defineField } from "sanity"
+import { defineType, defineField } from "sanity";
 
 export default defineType({
   name: "menu",
@@ -6,16 +6,30 @@ export default defineType({
   type: "document",
 
   fields: [
+
+    defineField({
+      name: "id",
+      title: "ID",
+      type: "number",
+    }),
+
     defineField({
       name: "title",
       title: "Title",
-      type: "string"
+      type: "string",
     }),
 
     defineField({
       name: "path",
       title: "Path",
-      type: "string"
+      type: "string",
+    }),
+
+    defineField({
+      name: "newTab",
+      title: "Open In New Tab",
+      type: "boolean",
+      initialValue: false,
     }),
 
     defineField({
@@ -26,11 +40,67 @@ export default defineType({
         {
           type: "object",
           fields: [
-            { name: "title", type: "string" },
-            { name: "path", type: "string" }
-          ]
-        }
-      ]
-    })
-  ]
-})
+            {
+              name: "id",
+              title: "ID",
+              type: "number",
+            },
+            {
+              name: "title",
+              title: "Title",
+              type: "string",
+            },
+            {
+              name: "path",
+              title: "Path",
+              type: "string",
+            },
+            {
+              name: "newTab",
+              title: "Open In New Tab",
+              type: "boolean",
+              initialValue: false,
+            },
+          ],
+        },
+      ],
+    }),
+
+    defineField({
+      name: "logoLight",
+      title: "Logo Light",
+      type: "image",
+      options: {
+        hotspot: true,
+      },
+    }),
+
+    defineField({
+      name: "logoDark",
+      title: "Logo Dark",
+      type: "image",
+      options: {
+        hotspot: true,
+      },
+    }),
+
+    defineField({
+      name: "githubLink",
+      title: "GitHub Link",
+      type: "url",
+    }),
+
+    defineField({
+      name: "buttonText",
+      title: "Button Text",
+      type: "string",
+    }),
+
+    defineField({
+      name: "buttonLink",
+      title: "Button Link",
+      type: "url",
+    }),
+
+  ],
+});
