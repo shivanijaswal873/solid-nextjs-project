@@ -41,37 +41,29 @@
 // }
 import { getPage } from "@/sanity/lib/getpage";
 import Hero from "@/components/Hero";
-// import Feature from "@/sanity/schemaTypes/feature";
 import Integration from "@/components/Integration";
-import CTA from "@/components/CTA";
+import Brands from "@/components/Brands";
 
 export default async function Home() {
-
   const page = await getPage("home");
-  console.log(page ,"page")
+  console.log(page, "page");
 
   return (
     <main>
       {page?.sections?.map((section: any, index: number) => {
-
         switch (section._type) {
-
           case "hero":
             return <Hero key={index} data={section} />;
 
-          // case "featureSection":
-          //   return <Feature key={index} data={section} />;
+          case "brands":
+            return <Brands key={index} data={section} />;
 
-          // case "integrationSection":
-          //   return <Integration key={index} data={section} />;
-
-          // case "ctaSection":
-          //   return <CTA key={index} data={section} />;
+          case "integration":
+            return <Integration key={index} data={section} />;
 
           default:
             return null;
         }
-
       })}
     </main>
   );

@@ -3,7 +3,7 @@ import { defineType, defineField } from "sanity";
 export default defineType({
   name: "integration",
   title: "Integration Section",
-  type: "document",
+  type: "object",
 
   fields: [
     defineField({

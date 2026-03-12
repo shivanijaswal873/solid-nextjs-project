@@ -2,40 +2,44 @@ import { defineType, defineField } from "sanity";
 
 
 export default defineType({
-  name: "page",
-  title: "Page",
-  type: "document",
+    name: "page",
+    title: "Page",
+    type: "document",
 
-  fields: [
-    defineField({
-      name: "title",
-      title: "Title",
-      type: "string",
-    }),
+    fields: [
+        defineField({
+            name: "title",
+            title: "Title",
+            type: "string",
+        }),
 
-    defineField({
-      name: "slug",
-      title: "Slug",
-      type: "slug",
-      options: {
-        source: "title",
-      },
-    }),
+        defineField({
+            name: "slug",
+            title: "Slug",
+            type: "slug",
+            options: {
+                source: "title",
+            },
+        }),
 
-    defineField({
-      name: "sections",
-      title: "Page Sections",
-      type: "array",
+        defineField({
+            name: "sections",
+            title: "Page Sections",
+            type: "array",
 
-      of: [
-        {type:"menu"},
-        { type: "hero" },
-        { type: "integration" },
-        { type: "featureSection" },
-        { type: "aboutSection" },
-        { type: "ctaSection" },
-        { type: "funFactSection" },
-      ],
-    }),
-  ],
+            of: [
+                { type: "menu" },
+                { type: "hero" },
+                    { type: "brands" },
+                { type: "integration" },
+           
+                // { type: "featureSection" },
+                // { type: "integration" },
+                // { type: "featureSection" },
+                // { type: "aboutSection" },
+                // { type: "ctaSection" },
+                // { type: "funFactSection" },
+            ],
+        }),
+    ],
 });

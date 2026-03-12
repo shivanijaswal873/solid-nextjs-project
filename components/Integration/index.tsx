@@ -2,27 +2,20 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { useEffect, useState } from "react";
 import SectionHeader from "../Common/SectionHeader";
-import { getIntegration } from "@/sanity/lib/getIntegration";
 
-const Integration = () => {
-  const [data, setData] = useState<any>(null);
+interface IntegrationProps {
+  data: any;
+}
 
-  useEffect(() => {
-    async function loadData() {
-      const res = await getIntegration();
-      setData(res);
-    }
-
-    loadData();
-  }, []);
+const Integration = ({ data }: IntegrationProps) => {
 
   if (!data) return null;
 
   return (
     <section>
       <div className="max-w-c-1390 mx-auto px-4 md:px-8 2xl:px-0">
+
         <SectionHeader
           headerInfo={{
             title: data?.title,
@@ -44,13 +37,13 @@ const Integration = () => {
               src={data.dottedLight.asset.url}
               alt="Dotted"
               className="dark:hidden"
-              style={{ position: "static" }}
             />
           )}
 
           {data?.dottedDark?.asset?.url && (
             <Image
-              fill
+              width={1200}
+              height={400}
               src={data.dottedDark.asset.url}
               alt="Dotted"
               className="hidden dark:block"
@@ -59,49 +52,51 @@ const Integration = () => {
 
         </div>
 
-     <div className="flex flex-wrap justify-around gap-y-14">
+        <div className="flex flex-wrap justify-around gap-y-14">
 
-  {data?.items?.map((item: any, index: number) => (
-    <motion.div
-      key={index}
-      variants={{
-        hidden: { opacity: 0, y: -20 },
-        visible: { opacity: 1, y: 0 },
-      }}
-      initial="hidden"
-      whileInView="visible"
-      transition={{ duration: 1, delay: 0.1 }}
-      viewport={{ once: true }}
+          {data?.items?.map((item: any, index: number) => (
+            <motion.div
+              key={index}
+              variants={{
+                hidden: { opacity: 0, y: -20 },
+                visible: { opacity: 1, y: 0 },
+              }}
+              initial="hidden"
+              whileInView="visible"
+              transition={{ duration: 1, delay: 0.1 }}
+              viewport={{ once: true }}
               className="animate_top w-1/6"
-    >
+            >
 
-      {item?.type === "empty" && item?.logo?.asset?.url && (
-        <div className="shadow-solid-7 dark:bg-btndark inline-block rounded-[10px] bg-white p-4.5">
-          <Image
-            width={50}
-            height={50}
-            src={item.logo.asset.url}
-            alt="Brand"
-          />
+              {item?.type === "empty" && item?.logo?.asset?.url && (
+                <div className="shadow-solid-7 dark:bg-btndark inline-block rounded-[10px] bg-white p-4.5">
+                  <Image
+                    width={50}
+                    height={50}
+                    src={item.logo.asset.url}
+                    alt="Brand"
+                  />
+                </div>
+              )}
+
+              {item?.type === "dot" && (
+                <div
+                  className="rounded-full"
+                  style={{
+                    backgroundColor: item?.dotColor,
+                    width: item?.dotSize || "12px",
+                    height: item?.dotSize || "12px",
+                  }}
+                />
+              )}
+
+              {/* {item?.type === "empty" && <div />} */}
+
+            </motion.div>
+          ))}
+
         </div>
-      )}
 
-      {item?.type === "dot" && (
-        <div
-          className="rounded-full"
-          style={{
-            backgroundColor: item?.dotColor,
-            width: item?.dotSize || "12px",
-            height: item?.dotSize || "12px",
-          }}
-        />
-      )}
-
-
-    </motion.div>
-  ))}
-
-</div>
       </div>
     </section>
   );
