@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
+import { getPage } from "@/sanity/lib/getpage";
 
 interface HeroProps {
   data: any;
