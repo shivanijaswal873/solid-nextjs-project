@@ -3,12 +3,12 @@ import { defineType, defineField } from "sanity";
 export default defineType({
   name: "aboutSection",
   title: "About Section",
-  type: "document",
+  type: "object",
 
   fields: [
     defineField({
       name: "badge",
-      title: "Badge Text",
+      title: "Badge",
       type: "string",
     }),
 
@@ -32,13 +32,13 @@ export default defineType({
 
     defineField({
       name: "imageLight",
-      title: "Image Light",
+      title: "Light Image",
       type: "image",
     }),
 
     defineField({
       name: "imageDark",
-      title: "Image Dark",
+      title: "Dark Image",
       type: "image",
     }),
 
@@ -60,7 +60,7 @@ export default defineType({
 
     defineField({
       name: "secondTitle",
-      title: "Second Section Title",
+      title: "Second Title",
       type: "string",
     }),
 
@@ -84,13 +84,13 @@ export default defineType({
 
     defineField({
       name: "secondImageLight",
-      title: "Second Image Light",
+      title: "Second Light Image",
       type: "image",
     }),
 
     defineField({
       name: "secondImageDark",
-      title: "Second Image Dark",
+      title: "Second Dark Image",
       type: "image",
     }),
 
