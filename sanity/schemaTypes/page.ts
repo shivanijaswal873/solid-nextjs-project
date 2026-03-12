@@ -33,11 +33,11 @@ export default defineType({
                 { type: "brands" },
                 { type: "featureSection"},
                 { type: "integration" },
-           
+                { type: "aboutSection" },
                 // { type: "featureSection" },
                 // { type: "integration" },
                 // { type: "featureSection" },
-                // { type: "aboutSection" },
+                
                 // { type: "ctaSection" },
                 // { type: "funFactSection" },
             ],

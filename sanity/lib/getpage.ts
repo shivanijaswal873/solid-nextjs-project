@@ -8,13 +8,21 @@ export async function getPage(slug: string) {
       ...,
       _type,
 
-      heroImageLight{asset->{url}},
-      heroImageDark{asset->{url}},
+      heroImageLight{
+        asset->{url}
+      },
+      heroImageDark{
+        asset->{url}
+      },
 
       brands[]{
         href,
-        image{asset->{url}},
-        imageDark{asset->{url}}
+        image{
+          asset->{url}
+        },
+        imageDark{
+          asset->{url}
+        }
       },
 
       features[]{
@@ -25,8 +33,25 @@ export async function getPage(slug: string) {
         }
       },
 
-      dottedLight{asset->{url}},
-      dottedDark{asset->{url}},
+      imageLight{
+        asset->{url}
+      },
+      imageDark{
+        asset->{url}
+      },
+      secondImageLight{
+        asset->{url}
+      },
+      secondImageDark{
+        asset->{url}
+      },
+
+      dottedLight{
+        asset->{url}
+      },
+      dottedDark{
+        asset->{url}
+      },
 
       items[]{
         ...,
@@ -34,8 +59,9 @@ export async function getPage(slug: string) {
           asset->{url}
         }
       }
+
     }
   }`;
 
-  return client.fetch(query,{slug});
+  return client.fetch(query, { slug });
 }

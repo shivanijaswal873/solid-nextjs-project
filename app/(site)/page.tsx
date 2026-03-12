@@ -44,6 +44,7 @@ import Hero from "@/components/Hero";
 import Integration from "@/components/Integration";
 import Brands from "@/components/Brands";
 import Features from "@/components/Features";
+import About from "@/components/About";
 
 export default async function Home() {
   const page = await getPage("home");
@@ -58,13 +59,16 @@ export default async function Home() {
 
           case "brands":
             return <Brands key={index} data={section} />;
-             
+
           case "featureSection":
-            return <Features key={index} data={section } />;
+            return <Features key={index} data={section} />;
+
+          case "aboutSection":
+            return <About key={index} data={section} />;
 
           case "integration":
             return <Integration key={index} data={section} />;
-         
+
           default:
             return null;
         }

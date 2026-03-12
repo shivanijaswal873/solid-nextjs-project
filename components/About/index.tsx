@@ -1,23 +1,9 @@
 "use client";
-
-import { motion } from "framer-motion";
 import Image from "next/image";
-import { useEffect, useState } from "react";
-import { getAbout } from "@/sanity/lib/getAbout";
-
-const About = () => {
-  const [data, setData] = useState<any>(null);
-
-  useEffect(() => {
-    async function loadData() {
-      const res = await getAbout();
-      setData(res);
-    }
-    loadData();
-  }, []);
-
+import { motion } from "framer-motion";
+type AboutProps = { data: any };
+export default function About({ data }: AboutProps) {
   if (!data) return null;
-
   return (
     <>
       <section className="overflow-hidden pb-20 lg:pb-25 xl:pb-30">
@@ -147,6 +133,4 @@ const About = () => {
       </section>
     </>
   );
-};
-
-export default About;
+}
