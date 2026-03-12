@@ -11,7 +11,8 @@ import feature from './feature'
 import about from './about'
 import featureTab from './featureTab'
 import funFact from './funFact'
+import cta from './cta'
 
 export const schema: { types: SchemaTypeDefinition[] } = {
-  types: [blockContentType, categoryType, postType, authorType, menu, hero, integration, feature, about, featureTab, funFact],
+  types: [blockContentType, categoryType, postType, authorType, menu, hero, integration, feature, about, featureTab, funFact,cta],
 }
