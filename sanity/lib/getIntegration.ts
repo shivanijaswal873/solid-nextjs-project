@@ -2,18 +2,29 @@ import { client } from "./client";
 
 export async function getIntegration() {
 
-  const query = `*[_type == "integration"][0]{
+  const query = `*[_type=="integration"][0]{
+
     title,
     subtitle,
     description,
 
-    brands[]{
+    dottedLight{
+      asset->{url}
+    },
+
+    dottedDark{
+      asset->{url}
+    },
+
+    items[]{
+      type,
+      dotColor,
+      dotSize,
       logo{
-        asset->{
-          url
-        }
+        asset->{url}
       }
     }
+
   }`;
 
   return await client.fetch(query);
