@@ -43,6 +43,7 @@ import { getPage } from "@/sanity/lib/getpage";
 import Hero from "@/components/Hero";
 import Integration from "@/components/Integration";
 import Brands from "@/components/Brands";
+import Features from "@/components/Features";
 
 export default async function Home() {
   const page = await getPage("home");
@@ -57,10 +58,13 @@ export default async function Home() {
 
           case "brands":
             return <Brands key={index} data={section} />;
+             
+          case "featureSection":
+            return <Features key={index} data={section } />;
 
           case "integration":
             return <Integration key={index} data={section} />;
-
+         
           default:
             return null;
         }

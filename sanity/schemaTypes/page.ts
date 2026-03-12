@@ -30,7 +30,8 @@ export default defineType({
             of: [
                 { type: "menu" },
                 { type: "hero" },
-                    { type: "brands" },
+                { type: "brands" },
+                { type: "featureSection"},
                 { type: "integration" },
            
                 // { type: "featureSection" },
