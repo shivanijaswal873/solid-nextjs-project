@@ -22,6 +22,10 @@ export async function getPage(slug: string) {
       leftImage{asset->{url}},
       rightImage{asset->{url}},
 
+      image{asset->{url}},
+      arrowLight{asset->{url}},
+      arrowDark{asset->{url}},
+
       items[]{
         ...,
         logo{asset->{url}}

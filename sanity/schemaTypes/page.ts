@@ -36,6 +36,7 @@ export default defineType({
                 { type: "featuresTabSection" },
                 { type: "funFactSection" },
                 { type: "integration" },
+                { type: "ctaSection" },
                 // { type: "integration" },
                 // { type: "featureSection" },
 

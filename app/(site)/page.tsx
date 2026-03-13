@@ -47,6 +47,8 @@ import Features from "@/components/Features";
 import About from "@/components/About";
 import FeaturesTab from "@/components/FeaturesTab";
 import FunFact from "@/components/FunFact";
+import Cta from "@/sanity/schemaTypes/cta";
+import CTA from "@/components/CTA";
 
 export default async function Home() {
   const page = await getPage("home");
@@ -74,7 +76,8 @@ export default async function Home() {
               return <FunFact key={index} data={section} />
           case "integration":
             return <Integration key={index} data={section} />;
-
+           case "ctaSection":
+            return <CTA  key={index} data={section}/>
           default:
             return null;
         }
