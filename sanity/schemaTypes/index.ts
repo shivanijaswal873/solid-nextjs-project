@@ -9,15 +9,14 @@ import hero from './hero'
 import integration from './integration'
 import feature from './feature'
 import about from './about'
-// import featureTab from './featureTab'
+import featureTab from './featureTab'
 // import funFact from './funFact'
 // import cta from './cta'
 import page from "./page";
 import Brand from './brand'
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [blockContentType, categoryType, postType, authorType, page, menu, hero, Brand, integration,
-    feature, about,
-    //  featureTab,
+    feature, about, featureTab,
     // funFact, cta
   ],
 }

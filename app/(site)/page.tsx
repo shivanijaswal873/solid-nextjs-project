@@ -45,6 +45,7 @@ import Integration from "@/components/Integration";
 import Brands from "@/components/Brands";
 import Features from "@/components/Features";
 import About from "@/components/About";
+import FeaturesTab from "@/components/FeaturesTab";
 
 export default async function Home() {
   const page = await getPage("home");
@@ -65,6 +66,9 @@ export default async function Home() {
 
           case "aboutSection":
             return <About key={index} data={section} />;
+
+            case "featuresTabSection":
+              return <FeaturesTab key={index} data={section} />
 
           case "integration":
             return <Integration key={index} data={section} />;

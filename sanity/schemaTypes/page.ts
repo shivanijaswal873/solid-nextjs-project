@@ -31,13 +31,13 @@ export default defineType({
                 { type: "menu" },
                 { type: "hero" },
                 { type: "brands" },
-                { type: "featureSection"},
+                { type: "featureSection" },
                 { type: "integration" },
                 { type: "aboutSection" },
-                // { type: "featureSection" },
+                { type: "featuresTabSection" }
                 // { type: "integration" },
                 // { type: "featureSection" },
-                
+
                 // { type: "ctaSection" },
                 // { type: "funFactSection" },
             ],
