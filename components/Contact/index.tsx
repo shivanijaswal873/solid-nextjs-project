@@ -1,44 +1,41 @@
 "use client";
+
 import { motion } from "framer-motion";
 import Image from "next/image";
 import React from "react";
 
-const Contact = () => {
-  /**
-   * Source: https://www.joshwcomeau.com/react/the-perils-of-rehydration/
-   * Reason: To fix rehydration error
-   */
+const Contact = ({ data }: any) => {
   const [hasMounted, setHasMounted] = React.useState(false);
+
   React.useEffect(() => {
     setHasMounted(true);
   }, []);
-  if (!hasMounted) {
-    return null;
-  }
+
+  if (!hasMounted) return null;
 
   return (
-    <>
-      {/* <!-- ===== Contact Start ===== --> */}
-      <section id="support" className="px-4 md:px-8 2xl:px-0">
-        <div className="relative mx-auto max-w-c-1390 px-7.5 pt-10 lg:px-15 lg:pt-15 xl:px-20 xl:pt-20">
+    <section id="support" className="px-4 md:px-8 2xl:px-0">
+      <div className="relative mx-auto max-w-c-1390 px-7.5 pt-10 lg:px-15 lg:pt-15 xl:px-20 xl:pt-20">
           <div className="absolute left-0 top-0 -z-1 h-2/3 w-full rounded-lg bg-linear-to-t from-transparent to-[#dee7ff47] dark:bg-linear-to-t dark:to-[#252A42]"></div>
-          <div className="absolute bottom-[-255px] left-0 -z-1 h-full w-full">
-            <Image
+        <div className="absolute bottom-[-255px] left-0 -z-1 h-full w-full">
+          <Image
               src="./images/shape/shape-dotted-light.svg"
-              alt="Dotted"
-              className="dark:hidden"
-              fill
-            />
-            <Image
+            alt="Dotted"
+            className="dark:hidden"
+            fill
+          />
+          <Image
               src="./images/shape/shape-dotted-dark.svg"
-              alt="Dotted"
-              className="hidden dark:block"
-              fill
-            />
-          </div>
+            alt="Dotted"
+            className="hidden dark:block"
+            fill
+          />
+        </div>
 
-          <div className="flex flex-col-reverse flex-wrap gap-8 md:flex-row md:flex-nowrap md:justify-between xl:gap-20">
-            <motion.div
+        <div className="flex flex-col-reverse flex-wrap gap-8 md:flex-row md:flex-nowrap md:justify-between xl:gap-20">
+
+      
+          <motion.div
               variants={{
                 hidden: {
                   opacity: 0,
@@ -53,52 +50,50 @@ const Contact = () => {
               initial="hidden"
               whileInView="visible"
               transition={{ duration: 1, delay: 0.1 }}
-              viewport={{ once: true }}
-              className="animate_top w-full rounded-lg bg-white p-7.5 shadow-solid-8 dark:border dark:border-strokedark dark:bg-black md:w-3/5 lg:w-3/4 xl:p-15"
-            >
-              <h2 className="mb-15 text-3xl font-semibold text-black dark:text-white xl:text-sectiontitle2">
-                Send a message
-              </h2>
+            viewport={{ once: true }}
+            className="animate_top w-full rounded-lg bg-white p-7.5 shadow-solid-8 dark:border dark:border-strokedark dark:bg-black md:w-3/5 lg:w-3/4 xl:p-15"
+          >
+            <h2 className="mb-15 text-3xl font-semibold text-black dark:text-white xl:text-sectiontitle2">
+              {data?.formTitle}
+            </h2>
 
-              <form
-                action="https://formbold.com/s/unique_form_id"
-                method="POST"
-              >
-                <div className="mb-7.5 flex flex-col gap-7.5 lg:flex-row lg:justify-between lg:gap-14">
-                  <input
-                    type="text"
-                    placeholder="Full name"
-                    className="w-full border-b border-stroke bg-transparent pb-3.5 focus:border-waterloo focus:placeholder:text-black focus-visible:outline-hidden dark:border-strokedark dark:focus:border-manatee dark:focus:placeholder:text-white lg:w-1/2"
-                  />
+            <form action={data?.formAction} method="POST">
 
-                  <input
-                    type="email"
-                    placeholder="Email address"
-                    className="w-full border-b border-stroke bg-transparent pb-3.5 focus:border-waterloo focus:placeholder:text-black focus-visible:outline-hidden dark:border-strokedark dark:focus:border-manatee dark:focus:placeholder:text-white lg:w-1/2"
-                  />
-                </div>
+              <div className="mb-7.5 flex flex-col gap-7.5 lg:flex-row lg:justify-between lg:gap-14">
+                <input
+                  type="text"
+                  placeholder={data?.namePlaceholder || "Full name"}
+                  className="w-full border-b border-stroke bg-transparent pb-3.5 focus:border-waterloo focus:placeholder:text-black focus-visible:outline-hidden dark:border-strokedark dark:focus:border-manatee dark:focus:placeholder:text-white lg:w-1/2"
+                />
 
-                <div className="mb-12.5 flex flex-col gap-7.5 lg:flex-row lg:justify-between lg:gap-14">
-                  <input
-                    type="text"
-                    placeholder="Subject"
-                    className="w-full border-b border-stroke bg-transparent pb-3.5 focus:border-waterloo focus:placeholder:text-black focus-visible:outline-hidden dark:border-strokedark dark:focus:border-manatee dark:focus:placeholder:text-white lg:w-1/2"
-                  />
+                <input
+                  type="email"
+                  placeholder={data?.emailPlaceholder || "Email address"}
+                  className="w-full border-b border-stroke bg-transparent pb-3.5 focus:border-waterloo focus:placeholder:text-black focus-visible:outline-hidden dark:border-strokedark dark:focus:border-manatee dark:focus:placeholder:text-white lg:w-1/2"
+                />
+              </div>
 
-                  <input
-                    type="text"
-                    placeholder="Phone number"
-                    className="w-full border-b border-stroke bg-transparent pb-3.5 focus:border-waterloo focus:placeholder:text-black focus-visible:outline-hidden dark:border-strokedark dark:focus:border-manatee dark:focus:placeholder:text-white lg:w-1/2"
-                  />
-                </div>
+              <div className="mb-12.5 flex flex-col gap-7.5 lg:flex-row  lg:justify-between lg:gap-14">
+                <input
+                  type="text"
+                  placeholder={data?.subjectPlaceholder || "Subject"}
+                  className="w-full border-b border-stroke bg-transparent pb-3.5 focus:border-waterloo focus:placeholder:text-black focus-visible:outline-hidden dark:border-strokedark dark:focus:border-manatee dark:focus:placeholder:text-white lg:w-1/2"
+                />
 
-                <div className="mb-11.5 flex">
-                  <textarea
-                    placeholder="Message"
-                    rows={4}
-                    className="w-full border-b border-stroke bg-transparent focus:border-waterloo focus:placeholder:text-black focus-visible:outline-hidden dark:border-strokedark dark:focus:border-manatee dark:focus:placeholder:text-white"
-                  ></textarea>
-                </div>
+                <input
+                  type="text"
+                  placeholder={data?.phonePlaceholder || "Phone number"}
+                  className="w-full border-b border-stroke bg-transparent pb-3.5 focus:border-waterloo focus:placeholder:text-black focus-visible:outline-hidden dark:border-strokedark dark:focus:border-manatee dark:focus:placeholder:text-white lg:w-1/2"
+                />
+              </div>
+
+              <div className="mb-11.5 flex">
+                <textarea
+                  placeholder={data?.messagePlaceholder || "Message"}
+                  rows={4}
+                  className="w-full border-b border-stroke bg-transparent focus:border-waterloo focus:placeholder:text-black focus-visible:outline-hidden dark:border-strokedark dark:focus:border-manatee dark:focus:placeholder:text-white"
+                />
+              </div>
 
                 <div className="flex flex-wrap gap-4 xl:justify-between ">
                   <div className="mb-4 flex md:mb-0">
@@ -124,21 +119,22 @@ const Contact = () => {
                         />
                       </svg>
                     </span>
-                    <label
-                      htmlFor="default-checkbox"
-                      className="flex max-w-[425px] cursor-pointer select-none pl-5"
-                    >
-                      By clicking Checkbox, you agree to use our “Form” terms
-                      And consent cookie usage in browser.
-                    </label>
-                  </div>
-
-                  <button
-                    aria-label="send message"
-                    className="inline-flex items-center gap-2.5 rounded-full bg-black px-6 py-3 font-medium text-white duration-300 ease-in-out hover:bg-blackho dark:bg-btndark"
+                  <label
+                    htmlFor="checkbox"
+                    className="flex max-w-[425px] cursor-pointer select-none pl-5"
                   >
-                    Send Message
-                    <svg
+                    {data?.checkboxText}
+                  </label>
+                </div>
+
+                <button
+                  type="submit"
+                  className="inline-flex items-center gap-2.5 rounded-full bg-black px-6 py-3 font-medium text-white  duration-300 ease-in-out hover:bg-blackho dark:bg-btndark"
+                >
+                  {data?.buttonText || "Send Message"}
+                
+                
+                  <svg
                       className="fill-white"
                       width="14"
                       height="14"
@@ -151,12 +147,14 @@ const Contact = () => {
                         fill=""
                       />
                     </svg>
-                  </button>
-                </div>
-              </form>
-            </motion.div>
+                     </button>
 
-            <motion.div
+              </div>
+
+            </form>
+          </motion.div>
+
+          <motion.div
               variants={{
                 hidden: {
                   opacity: 0,
@@ -171,41 +169,39 @@ const Contact = () => {
               initial="hidden"
               whileInView="visible"
               transition={{ duration: 2, delay: 0.1 }}
-              viewport={{ once: true }}
-              className="animate_top w-full md:w-2/5 md:p-7.5 lg:w-[26%] xl:pt-15"
-            >
-              <h2 className="mb-12.5 text-3xl font-semibold text-black dark:text-white xl:text-sectiontitle2">
-                Find us
-              </h2>
+            viewport={{ once: true }}
+            className="animate_top w-full md:w-2/5 md:p-7.5 lg:w-[26%] xl:pt-15"
+          >
+            <h2 className="mb-12.5 text-3xl font-semibold text-black dark:text-white xl:text-sectiontitle2">
+              {data?.infoTitle}
+            </h2>
 
-              <div className="5 mb-7">
-                <h3 className="mb-4 text-metatitle3 font-medium text-black dark:text-white">
-                  Our Loaction
-                </h3>
-                <p>290 Maryam Springs 260, Courbevoie, Paris, France</p>
-              </div>
-              <div className="5 mb-7">
-                <h3 className="mb-4 text-metatitle3 font-medium text-black dark:text-white">
-                  Email Address
-                </h3>
-                <p>
-                  <a href="#">yourmail@domainname.com</a>
-                </p>
-              </div>
-              <div>
-                <h4 className="mb-4 text-metatitle3 font-medium text-black dark:text-white">
-                  Phone Number
-                </h4>
-                <p>
-                  <a href="#">+009 42334 6343 843</a>
-                </p>
-              </div>
-            </motion.div>
-          </div>
+            <div className="mb-7">
+              <h3 className="mb-4 text-metatitle3 font-medium text-black dark:text-white">
+                {data?.locationTitle || "Our Location"}
+              </h3>
+              <p>{data?.location}</p>
+            </div>
+
+            <div className="mb-7">
+              <h3 className="mb-4 text-metatitle3 font-medium text-black dark:text-white">
+                {data?.emailTitle || "Email Address"}
+              </h3>
+              <p>{data?.email}</p>
+            </div>
+
+            <div>
+              <h3 className="mb-4 text-metatitle3 font-medium text-black dark:text-white">
+                {data?.phoneTitle || "Phone Number"}
+              </h3>
+              <p>{data?.phone}</p>
+            </div>
+
+          </motion.div>
+
         </div>
-      </section>
-      {/* <!-- ===== Contact End ===== --> */}
-    </>
+      </div>
+    </section>
   );
 };
 

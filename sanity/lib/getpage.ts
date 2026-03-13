@@ -78,7 +78,20 @@ export async function getPage(slug: string) {
           title,
           disabled
         }
-      }
+      },
+
+      formTitle,
+      formAction,
+      checkboxText,
+      buttonText,
+
+      infoTitle,
+      locationTitle,
+      location,
+      emailTitle,
+      email,
+      phoneTitle,
+      phone
     }
   }`;
 

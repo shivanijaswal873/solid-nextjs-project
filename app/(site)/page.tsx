@@ -52,6 +52,7 @@ import CTA from "@/components/CTA";
 import FAQ from "@/components/FAQ";
 import Pricing from "@/components/Pricing";
 import Testimonial from "@/components/Testimonial";
+import Contact from "@/components/Contact";
 
 export default async function Home() {
   const page = await getPage("home");
@@ -89,7 +90,10 @@ export default async function Home() {
               return <Testimonial  key={index} data={section}/>;
 
             case "pricingSection":
-              return <Pricing key={index} data={section} />
+              return <Pricing key={index} data={section} />;
+
+              case "contactSection":
+                return <Contact key={index} data={section} />
           default:
             return null;
         }

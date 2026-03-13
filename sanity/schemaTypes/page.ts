@@ -37,9 +37,12 @@ export default defineType({
                 { type: "funFactSection" },
                 { type: "integration" },
                 { type: "ctaSection" },
-                {type:"faqSection"},
-                {type:"testimonialSection"},
-                 {type:"pricingSection"}
+                { type: "faqSection" },
+                { type: "testimonialSection" },
+                { type: "pricingSection" },
+                {
+                    type: "contactSection"
+                }
                 // { type: "integration" },
                 // { type: "featureSection" },
 
