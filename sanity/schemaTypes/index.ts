@@ -15,8 +15,9 @@ import cta from './cta'
 import page from "./page";
 import Brand from './brand'
 import faqData from './faqSection'
+import testimonialSection from './testimonialSection'
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [blockContentType, categoryType, postType, authorType, page, menu, hero, Brand, integration,
-    feature, about, featureTab,funFact,cta,faqData
+    feature, about, featureTab, funFact, cta, faqData, testimonialSection
   ],
 }

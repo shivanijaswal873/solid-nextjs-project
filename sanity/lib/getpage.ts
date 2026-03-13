@@ -54,7 +54,13 @@ export async function getPage(slug: string) {
           faqs[]{
     quest,
     ans
-  }
+  },
+  testimonials[]{
+  name,
+  designation,
+  content,
+  image{asset->{url}}
+}
     }
   }`;
 

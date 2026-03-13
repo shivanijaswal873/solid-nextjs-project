@@ -50,6 +50,7 @@ import FunFact from "@/components/FunFact";
 import Cta from "@/sanity/schemaTypes/cta";
 import CTA from "@/components/CTA";
 import FAQ from "@/components/FAQ";
+import Testimonial from "@/components/Testimonial";
 
 export default async function Home() {
   const page = await getPage("home");
@@ -82,6 +83,8 @@ export default async function Home() {
 
           case "faqSection":
             return <FAQ key={index} data={section} />;
+          case "testimonialSection":
+            return <Testimonial key={index} data={section} />;
           default:
             return null;
         }
