@@ -1,35 +1,21 @@
 "use client";
 
 import Image from "next/image";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import FeaturesTabItem from "./FeaturesTabItem";
-import { getFeaturesTabs } from "@/sanity/lib/getTab";
 import { motion } from "framer-motion";
 
-const FeaturesTab = () => {
-  const [tabs, setTabs] = useState<any[]>([]);
-  const [currentTab, setCurrentTab] = useState("");
+const FeaturesTab = ({ data }: any) => {
+  const tabs = data?.tabs || [];
 
-  useEffect(() => {
-    async function loadData() {
-      const data = await getFeaturesTabs();
-
-      setTabs(data.tabs);
-
-      if (data.tabs?.length > 0) {
-        setCurrentTab(data.tabs[0].id);
-      }
-    }
-
-    loadData();
-  }, []);
+  const [currentTab, setCurrentTab] = useState(tabs[0]?.id);
 
   if (!tabs.length) return null;
 
   return (
+    <section className="relative pb-20 pt-18.5 lg:pb-22.5">
+      <div className="relative mx-auto max-w-c-1390 px-4 md:px-8 2xl:px-0">
 
-      <section className="relative pb-20 pt-18.5 lg:pb-22.5">
-        <div className="relative mx-auto max-w-c-1390 px-4 md:px-8 2xl:px-0">
         <div className="absolute -top-16 -z-1 mx-auto h-[350px] w-[90%]">
           <Image
             fill
@@ -52,7 +38,7 @@ const FeaturesTab = () => {
           viewport={{ once: true }}
           className="animate_top border-stroke shadow-solid-5 dark:border-strokedark dark:bg-blacksection dark:shadow-solid-6 mb-15 flex flex-wrap justify-center rounded-[10px] border bg-white md:flex-nowrap md:items-center lg:gap-7.5 xl:mb-21.5 xl:gap-12.5"
         >
-          {tabs.map((tab, index) => (
+          {tabs?.map((tab: any, index: number) => (
             <div
               key={index}
               onClick={() => setCurrentTab(tab.id)}
@@ -67,9 +53,10 @@ const FeaturesTab = () => {
                   {index + 1}
                 </p>
               </div>
+
               <div className="md:w-3/5 lg:w-auto">
                 <button className="xl:text-regular text-sm font-medium text-black dark:text-white">
-                  {tab.tabTitle}
+                  {tab?.tabTitle}
                 </button>
               </div>
             </div>
@@ -82,15 +69,16 @@ const FeaturesTab = () => {
           transition={{ duration: 0.5 }}
           className="max-w-c-1154 mx-auto"
         >
-          {tabs.map((tab, index) => (
+          {tabs?.map((tab: any, index: number) => (
             <div
               key={index}
-              className={tab.id === currentTab ? "block" : "hidden"}
+              className={tab?.id === currentTab ? "block" : "hidden"}
             >
               <FeaturesTabItem featureTab={tab} />
             </div>
           ))}
         </motion.div>
+
       </div>
     </section>
   );

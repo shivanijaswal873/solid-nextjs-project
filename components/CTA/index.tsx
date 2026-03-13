@@ -1,106 +1,70 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { getCTA } from "@/sanity/lib/getCta";
 
-const CTA = () => {
-
-  const [data, setData] = useState<any>(null);
-
-  useEffect(() => {
-    async function loadData() {
-      const res = await getCTA();
-      setData(res);
-    }
-
-    loadData();
-  }, []);
-
+const CTA = ({ data }: any) => {
   if (!data) return null;
 
   return (
     <section className="overflow-hidden px-4 py-20 md:px-8 lg:py-25 xl:py-30 2xl:px-0">
-        <div className="mx-auto max-w-c-1390 rounded-lg bg-linear-to-t from-[#F8F9FF] to-[#DEE7FF] px-7.5 py-12.5 dark:bg-blacksection dark:bg-linear-to-t dark:from-transparent dark:to-transparent dark:stroke-strokedark md:px-12.5 xl:px-17.5 xl:py-0">
-        <div className="flex flex-wrap gap-8 md:flex-nowrap md:items-center md:justify-between md:gap-0">
+      <div className="mx-auto max-w-c-1390 rounded-lg bg-gradient-to-t from-[#F8F9FF] to-[#DEE7FF] px-7.5 py-12.5 md:px-12.5 xl:px-17.5">
 
+        <div className="flex flex-col items-center justify-between gap-8 lg:flex-row">
 
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1,delay: 0.1  }}
+            transition={{ duration: 1 }}
             viewport={{ once: true }}
-            className="animate_left md:w-[70%] lg:w-1/2"
+            className="max-w-xl text-center lg:text-left"
           >
-
-            <h2 className="mb-4 w-11/12 text-3xl font-bold text-black dark:text-white xl:text-sectiontitle4">
+            <h2 className="mb-4 text-3xl font-bold text-black xl:text-sectiontitle4">
               {data?.title}
             </h2>
 
-            <p>{data?.description}</p>
-
+            <p className="text-gray-600">
+              {data?.description}
+            </p>
           </motion.div>
-
 
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
-           
-            transition={{ duration: 1,delay: 0.1  }}
+            transition={{ duration: 1 }}
             viewport={{ once: true }}
-            className=" animate_right lg:w-[45%]"
+            className="flex items-center gap-6"
           >
+            {data?.image?.asset?.url && (
+              <Image
+                src={data.image.asset.url}
+                width={200}
+                height={200}
+                alt="cta"
+              />
+            )}
 
-            <div className="flex items-center justify-end xl:justify-between">
+            <a
+              href={data?.buttonLink}
+              className="inline-flex items-center gap-2 rounded-full bg-black px-6 py-3 font-medium text-white hover:opacity-90"
+            >
+              {data?.buttonText}
 
-              {data?.image?.asset?.url && (
+              {data?.arrowLight?.asset?.url && (
                 <Image
-                  width={299}
-                  height={299}
-                  src={data.image.asset.url}
-                  alt="cta"
-                  className="hidden xl:block"
+                  src={data.arrowLight.asset.url}
+                  width={20}
+                  height={20}
+                  alt="arrow"
                 />
               )}
-
-              <a
-                href={data?.buttonLink}
-                className="inline-flex items-center gap-2.5 rounded-full bg-black px-6 py-3 font-medium text-white hover:opacity-90 dark:bg-white dark:text-black"
-              >
-
-                {data?.buttonText}
-
-                {data?.arrowLight?.asset?.url && (
-                  <Image
-                    width={20}
-                    height={20}
-                    src={data.arrowLight.asset.url}
-                    alt="arrow"
-                    className="dark:hidden"
-                  />
-                )}
-
-                {data?.arrowDark?.asset?.url && (
-                  <Image
-                    width={20}
-                    height={20}
-                    src={data.arrowDark.asset.url}
-                    alt="arrow"
-                    className="hidden dark:block"
-                  />
-                )}
-
-              </a>
-
-            </div>
-
+            </a>
           </motion.div>
 
         </div>
 
       </div>
-
     </section>
   );
 };

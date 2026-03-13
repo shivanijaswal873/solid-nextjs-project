@@ -3,7 +3,7 @@ import { defineType, defineField } from "sanity";
 export default defineType({
   name: "ctaSection",
   title: "CTA Section",
-  type: "document",
+  type: "object",
 
   fields: [
     {

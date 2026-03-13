@@ -8,58 +8,59 @@ export async function getPage(slug: string) {
       ...,
       _type,
 
-      heroImageLight{
-        asset->{url}
-      },
-      heroImageDark{
-        asset->{url}
-      },
+      heroImageLight{asset->{url}},
+      heroImageDark{asset->{url}},
 
-      brands[]{
-        href,
-        image{
-          asset->{url}
-        },
-        imageDark{
-          asset->{url}
-        }
+      imageLight{asset->{url}},
+      imageDark{asset->{url}},
+      secondImageLight{asset->{url}},
+      secondImageDark{asset->{url}},
+
+      dottedLight{asset->{url}},
+      dottedDark{asset->{url}},
+
+      leftImage{asset->{url}},
+      rightImage{asset->{url}},
+
+      image{asset->{url}},
+      arrowLight{asset->{url}},
+      arrowDark{asset->{url}},
+
+      items[]{
+        ...,
+        logo{asset->{url}}
       },
 
       features[]{
         title,
         description,
-        icon{
-          asset->{url}
-        }
+        icon{asset->{url}}
       },
 
-      imageLight{
-        asset->{url}
-      },
-      imageDark{
-        asset->{url}
-      },
-      secondImageLight{
-        asset->{url}
-      },
-      secondImageDark{
-        asset->{url}
+      tabs[]{
+        id,
+        tabTitle,
+        title,
+        desc1,
+        desc2,
+        image{asset->{url}},
+        imageDark{asset->{url}}
       },
 
-      dottedLight{
-        asset->{url}
+      facts[]{
+        number,
+        label
       },
-      dottedDark{
-        asset->{url}
-      },
-
-      items[]{
-        ...,
-        logo{
-          asset->{url}
-        }
-      }
-
+          faqs[]{
+    quest,
+    ans
+  },
+  testimonials[]{
+  name,
+  designation,
+  content,
+  image{asset->{url}}
+}
     }
   }`;
 

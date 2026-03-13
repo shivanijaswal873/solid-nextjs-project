@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { getPage } from "@/sanity/lib/getpage";
 type AboutProps = { data: any };
 export default function About({ data }: AboutProps) {
   if (!data) return null;
