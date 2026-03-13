@@ -19,6 +19,9 @@ export async function getPage(slug: string) {
       dottedLight{asset->{url}},
       dottedDark{asset->{url}},
 
+      leftImage{asset->{url}},
+      rightImage{asset->{url}},
+
       items[]{
         ...,
         logo{asset->{url}}
@@ -38,6 +41,11 @@ export async function getPage(slug: string) {
         desc2,
         image{asset->{url}},
         imageDark{asset->{url}}
+      },
+
+      facts[]{
+        number,
+        label
       }
     }
   }`;
