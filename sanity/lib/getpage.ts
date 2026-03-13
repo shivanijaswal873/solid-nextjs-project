@@ -1,9 +1,10 @@
 import { client } from "./client";
 
 export async function getPage(slug: string) {
-
-  const query = `*[_type=="page" && slug.current==$slug][0]{
+  const query = `
+  *[_type=="page" && slug.current==$slug][0]{
     title,
+
     sections[]{
       ...,
       _type,
@@ -51,10 +52,33 @@ export async function getPage(slug: string) {
         number,
         label
       },
-          faqs[]{
-    quest,
-    ans
-  }
+
+      faqs[]{
+        quest,
+        ans
+      },
+
+      testimonials[]{
+        name,
+        designation,
+        content,
+        image{
+          asset->{url}
+        }
+      },
+
+      plans[]{
+        name,
+        price,
+        duration,
+        description,
+        popular,
+        buttonText,
+        features[]{
+          title,
+          disabled
+        }
+      }
     }
   }`;
 
