@@ -38,7 +38,7 @@ export default defineType({
                 { type: "integration" },
                 { type: "ctaSection" },
                 {type:"faqSection"},
-                {type:"testimonialSection"}
+                 {type:"pricingSection"}
                 // { type: "integration" },
                 // { type: "featureSection" },
 
