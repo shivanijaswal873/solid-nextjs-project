@@ -7,20 +7,21 @@ type FaqData = {
 };
 
 const FAQItem = ({ faqData }: { faqData: FaqData }) => {
+
   const { activeFaq, id, handleFaqToggle, quest, ans } = faqData;
 
   return (
-    <>
-      <div className="flex flex-col border-b border-stroke last-of-type:border-none dark:border-strokedark">
-        <button
+    <div className="flex flex-col border-b border-stroke last-of-type:border-none dark:border-strokedark">
+
+      <button
           onClick={() => {
             handleFaqToggle(id);
           }}
-          className="flex cursor-pointer items-center justify-between px-6 py-5 text-metatitle3 font-medium text-black dark:text-white lg:px-9 lg:py-7.5"
-        >
-          {quest}
+        className="flex cursor-pointer items-center justify-between px-6 py-5 text-metatitle3 font-medium text-black dark:text-white lg:px-9 lg:py-7.5"
+      >
+        {quest}
 
-          {activeFaq === id ? (
+        {activeFaq === id ? (
             <svg
               width="18"
               height="4"
@@ -33,7 +34,7 @@ const FAQItem = ({ faqData }: { faqData: FaqData }) => {
                 fill="currentColor"
               />
             </svg>
-          ) : (
+        ) : (
             <svg
               width="18"
               height="18"
@@ -46,17 +47,18 @@ const FAQItem = ({ faqData }: { faqData: FaqData }) => {
                 fill="currentColor"
               />
             </svg>
-          )}
-        </button>
-        <p
-          className={`border-t border-stroke px-6 py-5 dark:border-strokedark lg:px-9 lg:py-7.5 ${
-            activeFaq === id ? "block" : "hidden"
-          }`}
-        >
-          {ans}
-        </p>
-      </div>
-    </>
+        )}
+      </button>
+
+      <p
+        className={`border-t border-stroke px-6 py-5 dark:border-strokedark lg:px-9 lg:py-7.5 ${
+          activeFaq === id ? "block" : "hidden"
+        }`}
+      >
+        {ans}
+      </p>
+
+    </div>
   );
 };
 

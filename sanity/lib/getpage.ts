@@ -50,7 +50,11 @@ export async function getPage(slug: string) {
       facts[]{
         number,
         label
-      }
+      },
+          faqs[]{
+    quest,
+    ans
+  }
     }
   }`;
 
