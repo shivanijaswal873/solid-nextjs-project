@@ -32,10 +32,10 @@ export default defineType({
                 { type: "hero" },
                 { type: "brands" },
                 { type: "featureSection" },
-                { type: "integration" },
                 { type: "aboutSection" },
                 { type: "featuresTabSection" },
-                 { type: "funFactSection" },
+                { type: "funFactSection" },
+                { type: "integration" },
                 // { type: "integration" },
                 // { type: "featureSection" },
 
