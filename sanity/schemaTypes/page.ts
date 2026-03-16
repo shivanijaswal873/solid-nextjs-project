@@ -42,7 +42,8 @@ export default defineType({
                 { type: "pricingSection" },
                 {
                     type: "contactSection"
-                }
+                },
+                //    { type: "blogSection" }
                 // { type: "integration" },
                 // { type: "featureSection" },
 

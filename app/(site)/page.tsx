@@ -53,6 +53,7 @@ import FAQ from "@/components/FAQ";
 import Pricing from "@/components/Pricing";
 import Testimonial from "@/components/Testimonial";
 import Contact from "@/components/Contact";
+import Blog from "@/components/Blog";
 
 export default async function Home() {
   const page = await getPage("home");
@@ -86,18 +87,22 @@ export default async function Home() {
           case "faqSection":
             return <FAQ key={index} data={section} />;
 
-            case "testimonialSection":
-              return <Testimonial  key={index} data={section}/>;
+          case "testimonialSection":
+            return <Testimonial key={index} data={section} />;
 
-            case "pricingSection":
-              return <Pricing key={index} data={section} />;
+          case "pricingSection":
+            return <Pricing key={index} data={section} />;
 
-              case "contactSection":
-                return <Contact key={index} data={section} />
+          case "contactSection":
+            return <Contact key={index} data={section} />;
+
+          // case "blogSection":
+          //   return <Blog key={index} />;
           default:
             return null;
         }
       })}
+      <Blog />
     </main>
   );
 }
